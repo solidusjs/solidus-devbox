@@ -4,6 +4,18 @@ unless Vagrant.has_plugin?('vagrant-solidus')
   abort "\033[31mVagrant needs an additional plugin for this box, run `vagrant plugin install vagrant-solidus` and try again\033[0m"
 end
 
+# Special command to auto-update myself!
+if ARGV[0] == 'update-devbox'
+  def host_exec(header, command)
+    puts header
+    output = %x(cd #{File.dirname(__FILE__)} && #{command} 2>&1)
+    abort "\033[31m#{output}\033[0m" unless $?.success?
+  end
+  host_exec('Updating solidus-devbox...', 'git pull')
+  host_exec('Updating vagrant-solidus...', 'vagrant plugin update vagrant-solidus')
+  exit
+end
+
 Vagrant.configure('2') do |config|
   # Setup Virtual Box
   config.vm.provider "virtualbox" do |box|

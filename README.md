@@ -32,6 +32,14 @@ This will boot the VM, and automatically install and configure everything that i
 
 At this point, you are ready to work on your Solidus site! Take a look at the vagrant-solidus [documentation][vagrant-solidus] to continue.
 
+## Update
+
+To update to the latest versions of this repo and the vagrant-solidus plugin, run this handy command:
+
+```
+$ vagrant update-devbox
+```
+
 
 [vagrant]: http://www.vagrantup.com
 [vagrantfile]: https://docs.vagrantup.com/v2/vagrantfile/
